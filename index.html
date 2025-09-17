@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I miei animali Preferiti</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- 1. React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- 2. ReactDOM -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 3. Babel (per poter scrivere JSX direttamente in HTML) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>I miei animali Preferiti</h1>
+    </header>
+    <main>
+      <figure>
+        <img src="https://picsum.photos/400/300" alt="Immagine Casuale" />
+      </figure>
+      <div class="lista-animali"></div>
+    </main>
+    <footer>
+      <p>Creato con amore da... un collega sbadato! 🐾</p>
+    </footer>
+
+    <!-- QUI inizia il montaggio del componente REACT -->
+    <script type="text/babel">
+      const animali = [
+        "cane",
+        "gatto",
+        "leone",
+        "tigre",
+        "elefante",
+        "giraffa",
+        "zebra",
+        "orso",
+        "lupo",
+        "volpe",
+        "cervo",
+        "coniglio",
+        "panda",
+        "koala",
+        "canguro",
+        "rinoceronte",
+        "ippopotamo",
+        "scimmia",
+        "delfino",
+        "balena",
+        "squalo",
+        "aquila",
+        "gufo",
+        "pinguino",
+        "tartaruga",
+        "serpente",
+        "coccodrillo",
+        "falco",
+        "foca",
+      ];
+
+      const ReactApp = () => {
+        return (
+          <details>
+            <summary className="title">Animali</summary>
+            <ul>
+              {animali.map((animale) => (
+                <li key={animale}>{animale}</li>
+              ))}
+            </ul>
+          </details>
+        );
+      };
+    </script>
+    <script type="text/babel">
+      const { createRoot } = ReactDOM;
+      const listaAnimali = document.querySelector(".lista-animali");
+      const root = createRoot(listaAnimali);
+      root.render(<ReactApp />);
+    </script>
+  </body>
+</html>
