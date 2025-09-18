@@ -28,48 +28,31 @@
 
     <!-- QUI inizia il montaggio del componente REACT -->
     <script type="text/babel">
-      const animali = [
-        "cane",
-        "gatto",
-        "leone",
-        "tigre",
-        "elefante",
-        "giraffa",
-        "zebra",
-        "orso",
-        "lupo",
-        "volpe",
-        "cervo",
-        "coniglio",
-        "panda",
-        "koala",
-        "canguro",
-        "rinoceronte",
-        "ippopotamo",
-        "scimmia",
-        "delfino",
-        "balena",
-        "squalo",
-        "aquila",
-        "gufo",
-        "pinguino",
-        "tartaruga",
-        "serpente",
-        "coccodrillo",
-        "falco",
-        "foca",
-      ];
+      const { useState } = React;
+
+      const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"];
 
       const ReactApp = () => {
+        const [showAnimal, setShowAnimal] = useState([]);
+
+        const addRandomAnimal = () => {
+          const randomAnimal = Math.floor(Math.random() * animalsChoices.length);
+          const chosenAnimal = animalsChoices[randomAnimal];
+          setShowAnimal((curr) => [...curr, chosenAnimal]);
+        };
+
         return (
-          <details>
-            <summary className="title">Animali</summary>
-            <ul>
-              {animali.map((animale) => (
-                <li key={animale}>{animale}</li>
-              ))}
-            </ul>
-          </details>
+          <div>
+            <button className="btn-animal" onClick={addRandomAnimal}>Aggiungi Animale</button>
+            <details open={showAnimal.length > 0}>
+              <summary className="title">Animali ({showAnimal.length})</summary>
+              <ul>
+                {showAnimal.map((currAnimal, id) => (
+                  <li key={`${id}-${currAnimal}`}>{currAnimal}</li>
+                ))}
+              </ul>
+            </details>
+          </div>
         );
       };
     </script>
